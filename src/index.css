@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App{
+  background-color: rgb(133, 198, 255);
+  width: 80%;
+  margin: auto;
+}
+
+.header{
+  padding: 30px;
+  text-align: center;
+}
+
+.pageContent{
+  background-color: rgb(205, 231, 255);
+  padding: 30px;
+}
+
+.footer {
+  background-color: rgb(63, 63, 63);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
