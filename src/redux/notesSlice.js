@@ -1,22 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import uniqid from "uniqid"
 
 
 export const notesSelector = (state) => state.notes.items
-export const statusSelector = (state) => state.notes.status
-export const errorSelector = (state) => state.notes.error
 
+const savedNotes = JSON.parse(localStorage.getItem("notes"))
 
 
 const notesSlice = createSlice({
     name:"notes",
     initialState:{
-        items:[],
-        status:"idle",
-        error:null
+        items:savedNotes ? savedNotes : [],
     },
     reducers:{
         newNote:(state,action)=>{
             const note = {
+                id:uniqid(),
                 title:action.payload.title,
                 description:action.payload.description
             }
@@ -29,8 +28,8 @@ const notesSlice = createSlice({
             localStorage.setItem("notes",JSON.stringify(state.items))
         },
         deleteNote:(state,action)=> {
-            const deleteNote = state.items.find(action.payload)
-            state.items.splice(deleteNote,1)
+            const index = state.items.findIndex((item)=> item.id === action.payload.id)
+            state.items.splice(index,1)
             localStorage.setItem("notes",JSON.stringify(state.items))
         }
     }
