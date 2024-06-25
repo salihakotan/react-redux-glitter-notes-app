@@ -94,7 +94,16 @@ function NotesList({setTab,setWillEditedNote}) {
                 </Col>
               );
             })}
+
+
+          
+
+
         </Row>
+
+        {notes.length <= 0 && (
+            <Box fontSize="20px">There is nothing to shown</Box>
+            )}
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>
